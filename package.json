@@ -1,0 +1,18 @@
+{
+  "name": "slack_jokebot",
+  "version": "1.0.0",
+  "description": "slack bot that tells random jokes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "restart": "nodemon index.js"
+  },
+  "author": "Marcos Palacios",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "slackbots": "^1.2.0"
+  },
+  "devDependencies": {}
+}
