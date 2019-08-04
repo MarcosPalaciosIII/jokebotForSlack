@@ -47,8 +47,72 @@ let handleMessage = (message, theChannel) => {
     chuckJoke(theChannel);
   } else if(message.toLowerCase().includes(' dad joke') || message.toLowerCase().includes(' dadjoke')) {
     randomJoke(theChannel);
+  } else if(message.toLowerCase().includes(' lets play')) {
+    gameOptions(sendToChannel)
   }
 };
+
+
+// Show Help Text
+let runHelp = (sendToChannel) => {
+  const params = {
+    icon_emoji: ':question:'
+  };
+
+  bot.postMessageToChannel(
+    `${sendToChannel}`,
+    `Type @JokeBot with 'chuck norris joke' or 'dad joke'`,
+    params
+  );
+}
+
+
+let gameOptions = (sendToChannel) => {
+  const params = {
+    icon_emoji: ':thinking_face:'
+  }
+  bot.postMessageToChannel({
+    'channel': `${sendToChannel}`,
+    "text": "Would you like to play a game?",
+    "attachments": [
+        {
+            "text": "Choose a game to play",
+            "fallback": "You are unable to choose a game",
+            "callback_id": "wopr_game",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "game",
+                    "text": "Chess",
+                    "type": "button",
+                    "value": "chess"
+                },
+                {
+                    "name": "game",
+                    "text": "Falken's Maze",
+                    "type": "button",
+                    "value": "maze"
+                },
+                {
+                    "name": "game",
+                    "text": "Thermonuclear War",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "war",
+                    "confirm": {
+                        "title": "Are you sure?",
+                        "text": "Wouldn't you prefer a good game of chess?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
+                    }
+                }
+            ]
+        }
+    ],
+    params
+})
+}
 
 
 // Tell a Chuck Norris Joke
@@ -89,18 +153,4 @@ let randomJoke = async (sendToChannel) => {
   } catch(err) {
     console.log("error getting Random Joke ------- ", err);
   }
-}
-
-
-// Show Help Text
-let runHelp = (sendToChannel) => {
-  const params = {
-    icon_emoji: ':question:'
-  };
-
-  bot.postMessageToChannel(
-    `${sendToChannel}`,
-    `Type @JokeBot with 'chuck norris joke' or 'dad joke'`,
-    params
-  );
 }
