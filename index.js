@@ -47,8 +47,8 @@ let handleMessage = (message, theChannel) => {
     chuckJoke(theChannel);
   } else if(message.toLowerCase().includes(' dad joke') || message.toLowerCase().includes(' dadjoke')) {
     randomJoke(theChannel);
-  } else if(message.toLowerCase().includes(' lets play')) {
-    gameOptions(sendToChannel)
+  } else if(message.toLowerCase().includes(' lets play a game')) {
+    gameOptions(theChannel)
   }
 };
 
@@ -70,7 +70,8 @@ let runHelp = (sendToChannel) => {
 let gameOptions = (sendToChannel) => {
   const params = {
     icon_emoji: ':thinking_face:'
-  }
+  };
+
   bot.postMessageToChannel({
     'channel': `${sendToChannel}`,
     "text": "Would you like to play a game?",
@@ -111,8 +112,8 @@ let gameOptions = (sendToChannel) => {
         }
     ],
     params
-})
-}
+});
+};
 
 
 // Tell a Chuck Norris Joke
