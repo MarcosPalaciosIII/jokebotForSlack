@@ -47,9 +47,10 @@ let handleMessage = (message, theChannel) => {
     chuckJoke(theChannel);
   } else if(message.toLowerCase().includes(' dad joke') || message.toLowerCase().includes(' dadjoke')) {
     randomJoke(theChannel);
-  } else if(message.toLowerCase().includes(' lets play a game')) {
-    gameOptions(theChannel)
   }
+  // else if(message.toLowerCase().includes(' lets play a game')) {
+  //   gameOptions(theChannel)
+  // }
 };
 
 
